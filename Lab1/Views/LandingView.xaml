@@ -11,20 +11,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition Height="0.35*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="0.8*"></RowDefinition>
+            <RowDefinition Height="0.8*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="When is your birthday?" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="22" FontWeight="Medium"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="When is your birthday?" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="22" FontWeight="Medium" Margin="0, 0, 0, 2"></TextBlock>
         <DatePicker Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" MinWidth="200"></DatePicker>
 
         <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="Your age is 19. Happy Birthday!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Your Western zodiac sign is Sagittarius." HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="10, 10, 0, 0"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="Your Chinese zodiac sign is Monkey." HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="-10, 10, 0, 0"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Your Western zodiac sign is Sagittarius." HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="10, 20, 0, 0"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Your Chinese zodiac sign is Monkey." HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="-10, 20, 0, 0"></TextBlock>
     </Grid>
 </UserControl>

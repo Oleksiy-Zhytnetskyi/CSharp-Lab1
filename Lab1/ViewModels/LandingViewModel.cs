@@ -8,12 +8,13 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace KMA.CSharp2024.Lab1.ViewModels
 {
     internal class LandingViewModel : INotifyPropertyChanged
     {
-        private User _user = new User();
+        private readonly User _user = new User();
 
         public DateTime BirthDate
         {

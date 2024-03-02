@@ -8,20 +8,27 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace KMA.CSharp2024.Lab1.ViewModels
 {
     internal class LandingViewModel : INotifyPropertyChanged
     {
+        private const int AGE_THRESHOLD = 135;
         private readonly User _user = new User();
 
         public DateTime BirthDate
         {
             get { return _user.BirthDate; }
             set 
-            { 
-                // TODO: Add validation!
+            {
+                if (!BirthDateIsValid(value))
+                {
+                    MessageBox.Show("Invalid birth date entered. Please try again.", 
+                        "Error: Invalid Birth Date", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 _user.BirthDate = value;
                 OnPropertyChanged(nameof(Age));
                 OnPropertyChanged(nameof(WesternZodiacSign));
@@ -32,8 +39,13 @@ namespace KMA.CSharp2024.Lab1.ViewModels
         public string Age
         {
             get 
-            { 
-                return $"Your age is {GetAge()}."; 
+            {
+                string result = $"Your age is {GetAge()}.";
+                if (TodayIsBirthday())
+                {
+                    result += " Happy Birthday!";
+                }
+                return result;
             }
         }
 
@@ -53,19 +65,44 @@ namespace KMA.CSharp2024.Lab1.ViewModels
             }
         }
 
+        private bool BirthDateIsValid(DateTime birthDate)
+        {
+            return !(birthDate > DateTime.Today || GetAge(birthDate) > AGE_THRESHOLD);
+        }
+
+        private bool TodayIsBirthday()
+        {
+            return BirthDate.Day == DateTime.Today.Day && BirthDate.Month == DateTime.Today.Month;
+        }
+
         private int GetAge()
         {
-            return DateTime.Today.Year - _user.BirthDate.Year;
+            return GetAge(BirthDate);
+        }
+
+        private static int GetAge(DateTime startDate)
+        {
+            int age = DateTime.Today.Year - startDate.Year;
+            if (startDate.Date > DateTime.Today.AddYears(-age))
+                --age;
+            return age;
         }
 
         private string GetWesternZodiacSign()
         {
-            return WesternZodiacHelper.GetWesternZodiacSign(_user.BirthDate).ToString();
+            return WesternZodiacHelper.GetWesternZodiacSign(BirthDate).ToString();
         }
 
         private string GetChineseZodiacSign()
         {
-            return ChineseZodiacHelper.GetChineseZodiacSign(_user.BirthDate).ToString();
+            try
+            {
+                return ChineseZodiacHelper.GetChineseZodiacSign(BirthDate).ToString();
+            }
+            catch (ArgumentException)
+            {
+                return "N/A";
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

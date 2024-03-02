@@ -31,7 +31,7 @@ namespace KMA.CSharp2024.Lab1.Views
         {
             if (DataContext is LandingViewModel viewModel)
             {
-                viewModel.BirthDate = (sender as DatePicker)?.SelectedDate ?? DateTime.Now;
+                viewModel.BirthDate = (sender as DatePicker)?.SelectedDate ?? DateTime.Today;
             }
         }
     }

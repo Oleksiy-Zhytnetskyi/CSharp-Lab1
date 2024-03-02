@@ -15,5 +15,15 @@ namespace KMA.CSharp2024.Lab1.Models
             get { return _birthDate; }
             set { _birthDate = value; }
         }
+
+        public User(int day = 1, int month = 1, int year = 2000)
+        {
+            _birthDate = new DateTime(year, month, day);
+        }
+
+        public User(DateTime birthDate)
+        {
+            _birthDate = birthDate;
+        }
     }
 }

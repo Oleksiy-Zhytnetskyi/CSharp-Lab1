@@ -9,8 +9,4 @@
     <RootNamespace>KMA.CSharp2024.$(MSBuildProjectName)</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Tools\Controls\" />
-  </ItemGroup>
-
 </Project>

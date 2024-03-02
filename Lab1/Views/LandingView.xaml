@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:KMA.CSharp2024.Lab1.Views"
+             xmlns:local="clr-namespace:KMA.CSharp2024.Lab1.Views" 
+             xmlns:viewmodels="clr-namespace:KMA.CSharp2024.Lab1.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:LandingViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" 
              d:Background="WhiteSmoke">
@@ -20,11 +22,35 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="When is your birthday?" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="22" FontWeight="Medium" Margin="0, 0, 0, 2"></TextBlock>
-        <DatePicker Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" MinWidth="200"></DatePicker>
+        <DatePicker 
+            Grid.Row="1" Grid.ColumnSpan="2" 
+            HorizontalAlignment="Center" VerticalAlignment="Center" 
+            FontSize="15" 
+            MinWidth="200"
+            SelectedDate="{Binding BirthDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        </DatePicker>
 
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Text="Your age is 19. Happy Birthday!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"></TextBlock>
+        <TextBlock 
+            Grid.Row="2" Grid.ColumnSpan="2" 
+            HorizontalAlignment="Center" VerticalAlignment="Center" 
+            FontSize="20"
+            Text="{Binding Age}">
+        </TextBlock>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Your Western zodiac sign is Sagittarius." HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="10, 20, 0, 0"></TextBlock>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="Your Chinese zodiac sign is Monkey." HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Margin="-10, 20, 0, 0"></TextBlock>
+        <TextBlock 
+            Grid.Row="3" Grid.Column="0" 
+            HorizontalAlignment="Center" VerticalAlignment="Top" 
+            FontSize="20" 
+            Margin="10, 20, 0, 0"
+            Text="{Binding WesternZodiacSign}">
+        </TextBlock>
+
+        <TextBlock 
+            Grid.Row="3" Grid.Column="1"
+            HorizontalAlignment="Center" VerticalAlignment="Top" 
+            FontSize="20"
+            Margin="-10, 20, 0, 0"
+            Text="{Binding ChineseZodiacSign}">
+        </TextBlock>
     </Grid>
 </UserControl>
